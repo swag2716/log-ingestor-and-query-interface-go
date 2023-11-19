@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"database/sql"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -9,8 +8,8 @@ import (
 )
 
 // Register HTTP endpoints
-var Handlers = func(r *mux.Router, db *sql.DB) {
+var Handlers = func(r *mux.Router) {
 	r.HandleFunc("/ingest", func(w http.ResponseWriter, r *http.Request) {
-		handlers.IngestHandler(w, r, db)
+		handlers.HandlerLog(w, r)
 	}).Methods("POST")
 }
